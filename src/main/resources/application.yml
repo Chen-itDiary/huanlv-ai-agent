@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: chen-ai-agent
+  profiles:
+    active: prod
+  # application.yml
+  ai:
+    vectorstore:
+      pgvector:
+        index-type:
+        dimensions: 1024
+        distance-type: COSINE_DISTANCE
+        max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
+        initialize-schema: true
+
+server:
+  port: 8123
+  servlet:
+    context-path: /api
+  tomcat:
+    max-http-header-size: 1048576  # 1MB
+    threads:
+      max: 200
+      min-spare: 10
+    max-http-form-post-size: 104857600
+
+# springdoc-openapi????
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.chen.chenaiagent.controller
+# knife4j???????????????
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn

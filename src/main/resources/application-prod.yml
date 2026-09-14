@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: chen-ai-agent
+    # application.yml
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/yu_ai_agent
+#    username: my_user
+#    password: your_password
+
+
+  ai:
+    dashscope:
+      # 通过环境变量注入，避免密钥入库：DASHSCOPE_API_KEY
+      api-key: ${DASHSCOPE_API_KEY:your-dashscope-api-key}
+      chat:
+        options:
+          model: qwen-plus
+#    mcp:
+#      client:
+#
+##        sse:
+##          connections:
+##            server1:
+##              url: http://localhost:8127
+#         stdio:
+#            servers-configuration: classpath:mcp-servers.json
+
+      # searchApi
+    search-api:
+      # 通过环境变量注入，避免密钥入库：SEARCH_API_KEY
+      api-key: ${SEARCH_API_KEY:your-search-api-key}
